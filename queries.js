@@ -1,21 +1,6 @@
-# 🏥 Hospital Management System (MongoDB)
-
-This project is a simple **Hospital Management System** built using **MongoDB**.  
-It demonstrates **CRUD operations, validation, filtering, projection, and views (with join)** in one complete script.
-
----
-
-## 🛠️ Technologies Used
-- MongoDB
-- MongoDB Shell (mongosh)
-
----
-
-## 🚀 Complete MongoDB Script
-
-```javascript
 // 🔹 1. Create Database
 use hospitalDB
+
 
 // 🔹 2. Create Collection with VALIDATION
 db.createCollection("patients", {
@@ -37,6 +22,7 @@ db.createCollection("patients", {
 db.createCollection("doctors")
 db.createCollection("appointments")
 
+
 // 🔹 3. INSERT (CREATE)
 db.patients.insertMany([
   { patient_id: 1, name: "Arun", age: 22, disease: "Fever" },
@@ -54,10 +40,12 @@ db.appointments.insertMany([
   { appointment_id: 1002, patient_id: 2, doctor_id: 102, date: "2026-04-11" }
 ])
 
+
 // 🔹 4. READ
 db.patients.find()
 db.doctors.find()
 db.appointments.find()
+
 
 // 🔹 5. UPDATE
 db.patients.updateOne(
@@ -70,19 +58,23 @@ db.doctors.updateOne(
   { $set: { specialization: "Physician" } }
 )
 
+
 // 🔹 6. DELETE
 db.patients.deleteOne({ patient_id: 3 })
 db.appointments.deleteOne({ appointment_id: 1002 })
 
+
 // 🔹 7. FILTERING
 db.patients.find({ age: { $gt: 25 } })
 db.doctors.find({ specialization: "Cardiology" })
+
 
 // 🔹 8. PROJECTION
 db.patients.find(
   {},
   { name: 1, disease: 1, _id: 0 }
 )
+
 
 // 🔹 9. VIEW (Virtual Collection)
 db.createView(
@@ -95,6 +87,7 @@ db.createView(
 
 // Use View
 db.patient_view.find()
+
 
 // 🔹 10. VIEW with JOIN ($lookup)
 db.createView(
@@ -114,6 +107,7 @@ db.createView(
 
 // Use View
 db.appointment_view.find()
+
 
 // 🔹 11. DROP (for experiment purpose)
 db.doctors.drop()
